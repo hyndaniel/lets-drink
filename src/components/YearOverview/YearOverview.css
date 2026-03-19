@@ -1,0 +1,110 @@
+.year-overview {
+  animation: fadeIn 0.4s ease;
+  padding: 0 var(--spacing-md);
+}
+
+.year-header {
+  margin-bottom: var(--spacing-lg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-xl);
+}
+
+.year-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.year-nav {
+  background: var(--surface-color-medium);
+  color: var(--text-primary);
+  border-radius: var(--radius-full);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
+
+.months-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.mini-month {
+  padding: var(--spacing-lg);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  background: var(--surface-color-heavy);
+}
+
+.mini-month-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mini-month-header h3 {
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.mini-count {
+  font-size: 0.75rem;
+  background: var(--accent-green-glow);
+  color: #248a3d;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.mini-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.mini-weekday {
+  font-size: 0.65rem;
+  text-align: center;
+  color: var(--text-tertiary);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.mini-day {
+  aspect-ratio: 1;
+  background: var(--border-color);
+  border-radius: 4px;
+  transition: transform 0.2s ease;
+}
+
+.mini-day.empty {
+  background: transparent;
+}
+
+.mini-day.has-record {
+  background: var(--accent-green);
+  box-shadow: 0 0 8px var(--accent-green-glow);
+}
+
+.mini-month:hover .mini-day.has-record {
+  transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
