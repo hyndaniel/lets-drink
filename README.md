@@ -2,6 +2,8 @@
 
 A personal drink history tracker — log your libations, locations, companions, and how you felt the morning after.
 
+![Let's Drink Preview](./public/preview.png)
+
 ## Features
 
 - 📅 **Year & Month Calendar View** — Browse all records on a visual annual overview, then drill into a month calendar
