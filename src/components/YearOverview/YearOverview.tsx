@@ -18,7 +18,7 @@ const YearOverview: React.FC<YearOverviewProps> = ({ records, onMonthClick }) =>
     <div className="year-overview">
       <div className="year-header">
         <button className="year-nav hover-lift" onClick={() => setCurrentYear(y => y - 1)}>&lt;</button>
-        <h2 className="year-title">{currentYear} In Review</h2>
+        <h2 className="year-title">{currentYear}</h2>
         <button className="year-nav hover-lift" onClick={() => setCurrentYear(y => y + 1)}>&gt;</button>
       </div>
       <div className="months-grid">
@@ -35,10 +35,12 @@ const YearOverview: React.FC<YearOverviewProps> = ({ records, onMonthClick }) =>
 
           for (let i = 1; i <= daysInMonth; i++) {
              const dateStr = `${currentYear}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
-             const hasRecord = records.some(r => r.date === dateStr);
+             const record = records.find(r => r.date === dateStr);
+             const hasRecord = !!record;
              if (hasRecord) drinkCount++;
+             const typeClass = hasRecord ? (record.gatheringType === 'family' ? 'type-family' : 'type-friends') : '';
              days.push(
-               <div key={dateStr} className={`mini-day ${hasRecord ? 'has-record' : ''}`} title={`${dateStr}${hasRecord ? ' - Drink Logged' : ''}`} />
+               <div key={dateStr} className={`mini-day ${hasRecord ? 'has-record' : ''} ${typeClass}`} title={`${dateStr}${hasRecord ? ` - ${record.gatheringType === 'family' ? '家庭聚会' : '朋友小聚'}` : ''}`} />
              );
           }
 

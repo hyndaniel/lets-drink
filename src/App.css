@@ -32,3 +32,25 @@
   font-size: 0.9rem;
   margin-top: var(--spacing-xs);
 }
+
+.add-btn {
+  background: var(--text-primary);
+  color: var(--bg-color);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.back-btn {
+  margin-bottom: var(--spacing-md);
+  background: var(--surface-color-medium);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

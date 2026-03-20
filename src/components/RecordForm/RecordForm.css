@@ -127,8 +127,22 @@
 }
 
 .emoji-btn.selected {
+  background: rgba(0, 122, 255, 0.1);
+  border-color: var(--accent-blue);
+  transform: scale(1.05);
+  box-shadow: var(--shadow-sm);
+}
+
+.emoji-btn.selected-friends {
   background: var(--accent-green-glow);
   border-color: var(--accent-green);
+  transform: scale(1.05);
+  box-shadow: var(--shadow-sm);
+}
+
+.emoji-btn.selected-family {
+  background: var(--accent-pink-glow);
+  border-color: var(--accent-pink);
   transform: scale(1.05);
   box-shadow: var(--shadow-sm);
 }

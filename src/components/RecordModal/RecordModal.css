@@ -21,7 +21,7 @@
   overflow-y: auto;
   padding: var(--spacing-xl);
   position: relative;
-  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .close-btn {
@@ -49,10 +49,8 @@
 .no-record {
   text-align: center;
   padding: var(--spacing-md);
-  color: #248a3d;
-  background: var(--accent-green-glow);
-  border-radius: var(--radius-md);
-  font-weight: 600;
+  color: var(--text-tertiary);
+  font-weight: 500;
   margin-top: var(--spacing-sm);
 }
 

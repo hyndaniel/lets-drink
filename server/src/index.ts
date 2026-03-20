@@ -44,6 +44,10 @@ db.serialize(() => {
     if (!hasNotes) {
       db.run("ALTER TABLE records ADD COLUMN notes TEXT");
     }
+    const hasGatheringType = rows.some((r: any) => r.name === 'gatheringType');
+    if (!hasGatheringType) {
+      db.run("ALTER TABLE records ADD COLUMN gatheringType TEXT DEFAULT 'friends'");
+    }
   });
 });
 
@@ -128,14 +132,15 @@ app.post('/api/records', upload.array('files'), async (req, res) => {
     const finalMedia = [...existingMedia, ...newMediaItems];
 
     const stmt = db.prepare(`
-      INSERT INTO records (id, date, location, people, alcoholAmount, notes, stateToday, stateTomorrow, media)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+      INSERT INTO records (id, date, location, people, alcoholAmount, notes, gatheringType, stateToday, stateTomorrow, media)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       ON CONFLICT(id) DO UPDATE SET
         date=excluded.date,
         location=excluded.location,
         people=excluded.people,
         alcoholAmount=excluded.alcoholAmount,
         notes=excluded.notes,
+        gatheringType=excluded.gatheringType,
         stateToday=excluded.stateToday,
         stateTomorrow=excluded.stateTomorrow,
         media=excluded.media
@@ -148,6 +153,7 @@ app.post('/api/records', upload.array('files'), async (req, res) => {
       JSON.stringify(recordData.people),
       recordData.alcoholAmount,
       recordData.notes || '',
+      recordData.gatheringType || 'friends',
       recordData.stateToday,
       recordData.stateTomorrow,
       JSON.stringify(finalMedia),

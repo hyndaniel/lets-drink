@@ -62,7 +62,7 @@
 .mini-count {
   font-size: 0.75rem;
   background: var(--accent-green-glow);
-  color: #248a3d;
+  color: #5fad87;
   padding: 2px 8px;
   border-radius: var(--radius-full);
   font-weight: 700;
@@ -95,13 +95,27 @@
   background: transparent;
 }
 
-.mini-day.has-record {
+.mini-day.has-record.type-friends {
   background: var(--accent-green);
-  box-shadow: 0 0 8px var(--accent-green-glow);
+  box-shadow: 0 0 6px var(--accent-green-glow);
+  transition: filter 0.3s ease, box-shadow 0.3s ease;
 }
 
-.mini-month:hover .mini-day.has-record {
-  transform: scale(1.1);
+.mini-day.has-record.type-family {
+  background: var(--accent-pink);
+  box-shadow: 0 0 6px var(--accent-pink-glow);
+  transition: filter 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* On month hover, gently brighten dots and intensify glow — no scaling */
+.mini-month:hover .mini-day.has-record.type-friends {
+  filter: brightness(1.05);
+  box-shadow: 0 0 12px var(--accent-green-glow);
+}
+
+.mini-month:hover .mini-day.has-record.type-family {
+  filter: brightness(1.05);
+  box-shadow: 0 0 12px var(--accent-pink-glow);
 }
 
 @keyframes fadeIn {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './RecordForm.css';
-import type { DrinkRecord, EmotionState, MediaItem } from '../../types';
+import type { DrinkRecord, EmotionState, GatheringType, MediaItem } from '../../types';
 
 interface RecordFormProps {
   initialData?: DrinkRecord;
@@ -19,6 +19,7 @@ const emojiMap: Record<EmotionState, string> = {
 
 const RecordForm: React.FC<RecordFormProps> = ({ initialData, initialDate, onSave, onClose }) => {
   const [date, setDate] = useState(initialData?.date || initialDate || new Date().toISOString().split('T')[0]);
+  const [gatheringType, setGatheringType] = useState<GatheringType>(initialData?.gatheringType || 'friends');
   const [location, setLocation] = useState(initialData?.location || '');
   const [people, setPeople] = useState(initialData?.people.join(', ') || '');
   const [alcoholAmount, setAlcoholAmount] = useState(initialData?.alcoholAmount || '');
@@ -44,6 +45,7 @@ const RecordForm: React.FC<RecordFormProps> = ({ initialData, initialDate, onSav
     const newRecord: DrinkRecord = {
       id: initialData ? initialData.id : Date.now().toString(),
       date,
+      gatheringType,
       location,
       people: people.split(',').map(p => p.trim()).filter(Boolean),
       alcoholAmount,
@@ -68,6 +70,28 @@ const RecordForm: React.FC<RecordFormProps> = ({ initialData, initialDate, onSav
           <div className="form-group">
             <label>Date</label>
             <input type="date" required value={date} onChange={e => setDate(e.target.value)} />
+          </div>
+
+          <div className="form-group">
+            <label>Gathering Type</label>
+            <div className="emoji-selector">
+              <button
+                type="button"
+                className={`emoji-btn ${gatheringType === 'friends' ? 'selected-friends' : ''}`}
+                onClick={() => setGatheringType('friends')}
+                style={{ fontSize: '0.85rem', padding: '8px 16px', flex: 1 }}
+              >
+                🍻 朋友小聚
+              </button>
+              <button
+                type="button"
+                className={`emoji-btn ${gatheringType === 'family' ? 'selected-family' : ''}`}
+                onClick={() => setGatheringType('family')}
+                style={{ fontSize: '0.85rem', padding: '8px 16px', flex: 1 }}
+              >
+                🏠 家庭聚会
+              </button>
+            </div>
           </div>
 
           <div className="form-group">

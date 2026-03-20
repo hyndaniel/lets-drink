@@ -134,6 +134,19 @@ const RecordModal: React.FC<RecordModalProps> = ({ record, date, onEdit, onAdd, 
 
           {record && (
             <div className="modal-body">
+              <div style={{
+                display: 'inline-block',
+                padding: '4px 14px',
+                borderRadius: 'var(--radius-full)',
+                fontSize: '0.85rem',
+                fontWeight: 600,
+                marginBottom: 'var(--spacing-md)',
+                background: record.gatheringType === 'family' ? 'var(--accent-pink-glow)' : 'var(--accent-green-glow)',
+                color: record.gatheringType === 'family' ? 'var(--accent-pink)' : 'var(--accent-green)',
+                border: `1px solid ${record.gatheringType === 'family' ? 'var(--accent-pink)' : 'var(--accent-green)'}`,
+              }}>
+                {record.gatheringType === 'family' ? '🏠 家庭聚会' : '🍻 朋友小聚'}
+              </div>
               <div className="info-grid">
                 <div className="info-item glass-panel">
                   <span className="icon">📍</span>

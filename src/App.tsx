@@ -71,14 +71,6 @@ function App() {
             setEditingRecord(undefined);
             setIsFormOpen(true);
           }}
-          style={{
-            background: 'var(--text-primary)',
-            color: 'var(--bg-color)',
-            padding: 'var(--spacing-sm) var(--spacing-lg)',
-            borderRadius: 'var(--radius-full)',
-            fontWeight: 600,
-            fontSize: '1rem'
-          }}
         >
           + Add Record
         </button>
@@ -102,18 +94,6 @@ function App() {
             <button 
               className="back-btn hover-lift" 
               onClick={() => setViewMode('year')}
-              style={{
-                marginBottom: 'var(--spacing-md)',
-                background: 'var(--surface-color-medium)',
-                border: '1px solid var(--border-color)',
-                color: 'var(--text-primary)',
-                padding: 'var(--spacing-sm) var(--spacing-md)',
-                borderRadius: 'var(--radius-full)',
-                fontWeight: 600,
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px'
-              }}
             >
               &larr; Overview
             </button>
