@@ -23,6 +23,7 @@ export const mockRecords: DrinkRecord[] = [
   {
     id: '1',
     date: getRelativeDate(2),
+    gatheringType: 'friends',
     people: ['Alice', 'Bob'],
     location: 'Downtown Bar',
     alcoholAmount: '3 Beers, 1 Cocktail',
@@ -33,6 +34,7 @@ export const mockRecords: DrinkRecord[] = [
   {
     id: '2',
     date: getRelativeDate(5),
+    gatheringType: 'family',
     people: ['Charlie'],
     location: 'Home',
     alcoholAmount: '2 Glasses of Wine',
@@ -43,6 +45,7 @@ export const mockRecords: DrinkRecord[] = [
   {
     id: '3',
     date: getRelativeDate(12),
+    gatheringType: 'friends',
     people: ['Dave', 'Eve', 'Frank'],
     location: 'Club 55',
     alcoholAmount: '5 Shots, 3 Mixed Drinks',
